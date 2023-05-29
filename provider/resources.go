@@ -54,33 +54,34 @@ func Provider() tfbridge.ProviderInfo {
 		Name: "rockset",
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
-		DisplayName: "",
+		DisplayName: "Rockset",
 		// The default publisher for all packages is Pulumi.
 		// Change this to your personal name (or a company name) that you
 		// would like to be shown in the Pulumi Registry if this package is published
 		// there.
-		Publisher: "Pulumi",
+		Publisher: "Rockset",
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//
 		// You may host a logo on a domain you control or add an SVG logo for your package
 		// in your repository and use the raw content URL for that file as your logo URL.
-		LogoURL: "",
+		LogoURL: "https://www.datocms-assets.com/2885/1646941580-rslogo-rockset-light_bg.svg",
 		// PluginDownloadURL is an optional URL used to download the Provider
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
-		PluginDownloadURL: "",
-		Description:       "A Pulumi package for creating and managing rockset cloud resources.",
+		PluginDownloadURL: "github://github.com/thomascollett/pulumi-rockset",
+		Description:       "A Pulumi package for creating and managing Rockset resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{"pulumi", "rockset", "category/cloud"},
+		Keywords:   []string{"pulumi", "rockset", "category/database"},
 		License:    "Apache-2.0",
-		Homepage:   "https://www.pulumi.com",
-		Repository: "https://github.com/thomascollett/pulumi-rockset",
+		Homepage:   "https://www.rockset.com",
+		Repository: "github://github.com/thomascollett/pulumi-rockset/",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg: "",
+		GitHubOrg: "rockset",
+		Version:   "v0.7.2",
 		Config:    map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
@@ -92,7 +93,7 @@ func Provider() tfbridge.ProviderInfo {
 			// },
 		},
 		PreConfigureCallback: preConfigureCallback,
-		Resources:            map[string]*tfbridge.ResourceInfo{
+		Resources: map[string]*tfbridge.ResourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi type. Two examples
 			// are below - the single line form is the common case. The multi-line form is
 			// needed only if you wish to override types or other default options.
@@ -105,11 +106,33 @@ func Provider() tfbridge.ProviderInfo {
 			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
 			// 	},
 			// },
+			"rockset_alias":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RocksetAlias")},
+			"rockset_api_key":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RocksetApiKey")},
+			"rockset_collection":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RocksetCollection")},
+			"rockset_dynamodb_collection":  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RocksetDynamodbCollection")},
+			"rockset_dynamodb_integration": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RocksetDynamodbIntegration")},
+			"rockset_gcs_collection":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RocksetGcsCollection")},
+			"rockset_gcs_integration":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RocksetGcsIntegration")},
+			"rockset_kafka_collection":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RocksetKafkaCollection")},
+			"rockset_kafka_integration":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RocksetKafkaIntegration")},
+			"rockset_kinesis_collection":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RocksetKinesisCollection")},
+			"rockset_kinesis_integration":  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RocksetKinesisIntegration")},
+			"rockset_mongodb_collection":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RocksetMongodbCollection")},
+			"rockset_mongodb_integration":  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RocksetMongodbIntegration")},
+			"rockset_query_lambda":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RocksetQueryLambda")},
+			"rockset_query_lambda_tag":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RocksetQueryLambdaTag")},
+			"rockset_role":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RocksetRole")},
+			"rockset_s3_collection":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RocksetS3Collection")},
+			"rockset_s3_integration":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RocksetS3Integration")},
+			"rockset_user":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RocksetUser")},
+			"rockset_view":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RocksetView")},
+			"rockset_workspace":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RocksetWorkspace")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
 			// is below.
 			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAmi")},
+			"rockset_account": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAccount")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
