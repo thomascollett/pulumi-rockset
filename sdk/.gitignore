@@ -1,4 +1,12 @@
 /nodejs/bin/
 /nodejs/node_modules/
 /python/bin/
-/java/.gradle/
+**/build/libs/
+**/.gradle
+.pnp.*
+/nodejs/.yarn/*
+!/nodejs/.yarn/patches
+!/nodejs/.yarn/plugins
+!/nodejs/.yarn/releases
+!/nodejs/.yarn/sdks
+!/nodejs/.yarn/versions

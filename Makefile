@@ -15,8 +15,6 @@ TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell pulumictl get version)
 
-TESTPARALLELISM := 10
-
 WORKING_DIR     := $(shell pwd)
 
 .PHONY: development provider build_sdks build_nodejs build_dotnet build_go build_python
@@ -116,13 +114,3 @@ install_nodejs_sdk::
 install_java_sdk::
 
 install_sdks:: install_dotnet_sdk install_python_sdk install_nodejs_sdk install_java_sdk
-
-test_setup::
-	docker compose up -d unifi
-	docker compose up bootstrap
-
-test_teardown::
-	docker compose down
-
-test::
-	cd examples && UNIFI_INSECURE=true go test -v -tags=all -parallel ${TESTPARALLELISM} -timeout 2h

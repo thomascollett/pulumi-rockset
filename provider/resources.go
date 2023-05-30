@@ -47,6 +47,11 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 	return nil
 }
 
+// boolRef returns a reference to the bool argument.
+func boolRef(b bool) *bool {
+	return &b
+}
+
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
@@ -86,15 +91,18 @@ func Provider() tfbridge.ProviderInfo {
 		// should match the TF provider module's require directive, not any replace directives.
 		GitHubOrg: "rockset",
 		Version:   version.Version,
-		Config:    map[string]*tfbridge.SchemaInfo{
-			// Add any required configuration here, or remove the example below if
-			// no additional points are required.
-			// "region": {
-			// 	Type: tfbridge.MakeType("region", "Region"),
-			// 	Default: &tfbridge.DefaultInfo{
-			// 		EnvVars: []string{"AWS_REGION", "AWS_DEFAULT_REGION"},
-			// 	},
-			// },
+		Config: map[string]*tfbridge.SchemaInfo{
+			"api_key": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ROCKSET_APIKEY"},
+				},
+				Secret: boolRef(true),
+			},
+			"api_server": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"ROCKSET_APISERVER"},
+				},
+			},
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
