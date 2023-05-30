@@ -20,7 +20,9 @@
     "language": {
         "csharp": {
             "compatibility": "tfbridge20",
-            "namespaces": null,
+            "namespaces": {
+                "rockset": "Rockset"
+            },
             "packageReferences": {
                 "Pulumi": "3.*"
             },
