@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as rockset from "@pulumi/rockset";
+ * import * as rockset from "@collett/pulumi-rockset";
  *
  * const sample = new rockset.RocksetWorkspace("sample", {description: "sample datasets"});
  * const _public = new rockset.RocksetS3Integration("public", {

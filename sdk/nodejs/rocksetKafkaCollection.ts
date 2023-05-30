@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as rockset from "@pulumi/rockset";
+ * import * as rockset from "@collett/pulumi-rockset";
  *
  * const config = new pulumi.Config();
  * const bootstrapServers = config.requireObject("bootstrapServers");

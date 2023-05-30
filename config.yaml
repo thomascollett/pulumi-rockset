@@ -1,0 +1,4 @@
+template: bridged
+provider: rockset
+upstream-provider-org: rockset
+lint: false

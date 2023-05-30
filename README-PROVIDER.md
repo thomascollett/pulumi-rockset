@@ -11,13 +11,13 @@ This package is available for several languages/platforms:
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
 ```bash
-npm install @thomascollett/pulumi-rockset
+npm install @tcollett/pulumi-rockset
 ```
 
 or `yarn`:
 
 ```bash
-yarn add @thomascollett/pulumi-rockset
+yarn add @tcollett/pulumi-rockset
 ```
 
 ### Python

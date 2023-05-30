@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as rockset from "@pulumi/rockset";
+ * import * as rockset from "@collett/pulumi-rockset";
  *
  * const query_onlyRocksetRole = new rockset.RocksetRole("query-onlyRocksetRole", {
  *     description: "This role can only query collections in the prod workspace in the usw2a1 cluster",

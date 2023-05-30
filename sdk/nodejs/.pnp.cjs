@@ -12,14 +12,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     ],\
     "dependencyTreeRoots": [\
       {\
-        "name": "@pulumi/rockset",\
+        "name": "@collett/pulumi-rockset",\
         "reference": "workspace:."\
       }\
     ],\
     "enableTopLevelFallback": true,\
     "ignorePatternData": "(^(?:\\\\.yarn\\\\/sdks(?:\\\\/(?!\\\\.{1,2}(?:\\\\/|$))(?:(?:(?!(?:^|\\\\/)\\\\.{1,2}(?:\\\\/|$)).)*?)|$))$)",\
     "fallbackExclusionList": [\
-      ["@pulumi/rockset", ["workspace:."]]\
+      ["@collett/pulumi-rockset", ["workspace:."]]\
     ],\
     "fallbackPool": [\
     ],\
@@ -28,6 +28,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
+            ["@pulumi/pulumi", "npm:3.68.0"],\
+            ["@types/mime", "npm:2.0.3"],\
+            ["@types/node", "npm:10.17.60"],\
+            ["typescript", "patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=289587"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@collett/pulumi-rockset", [\
+        ["workspace:.", {\
+          "packageLocation": "./",\
+          "packageDependencies": [\
+            ["@collett/pulumi-rockset", "workspace:."],\
             ["@pulumi/pulumi", "npm:3.68.0"],\
             ["@types/mime", "npm:2.0.3"],\
             ["@types/node", "npm:10.17.60"],\
@@ -481,19 +494,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@pulumi/query", "npm:0.3.0"]\
           ],\
           "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@pulumi/rockset", [\
-        ["workspace:.", {\
-          "packageLocation": "./",\
-          "packageDependencies": [\
-            ["@pulumi/rockset", "workspace:."],\
-            ["@pulumi/pulumi", "npm:3.68.0"],\
-            ["@types/mime", "npm:2.0.3"],\
-            ["@types/node", "npm:10.17.60"],\
-            ["typescript", "patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=289587"]\
-          ],\
-          "linkType": "SOFT"\
         }]\
       ]],\
       ["@types/long", [\
