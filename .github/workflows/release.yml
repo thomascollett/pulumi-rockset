@@ -21,7 +21,7 @@ env:
   GOVERSION: 1.19.x
   NODEVERSION: 16.x
   PYTHONVERSION: "3.9"
-  DOTNETVERSION: 3.1.301
+  DOTNETVERSION: 6.0
   JAVAVERSION: "11"
 jobs:
   prerequisites:
@@ -37,15 +37,18 @@ jobs:
         path: ci-scripts
         repository: pulumi/scripts
     - name: Install Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v4
       with:
         go-version: ${{ env.GOVERSION }}
+        cache-dependency-path: |
+          provider/go.sum
+          sdk/go.sum
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.5.0
+      uses: jaxxstorm/action-install-gh-release@v1.10.0
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v2
+      uses: pulumi/actions@v4
     - name: Build tfgen & provider binaries
       run: make provider
     - name: Tar provider binaries
@@ -144,25 +147,12 @@ jobs:
       uses: actions/setup-go@v4
       with:
         go-version: ${{ env.GOVERSION }}
-        cache-dependency-path: |
-          provider/go.sum
-          sdk/go.sum
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.10.0
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
       uses: pulumi/actions@v4
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-region: us-east-2
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        role-duration-seconds: 7200
-        role-session-name: ${{ env.PROVIDER }}@githubActions
-        role-external-id: upload-pulumi-release
-        role-to-assume: ${{ secrets.AWS_UPLOAD_ROLE_ARN }}
     - name: Set PreRelease Version
       run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic)" >> $GITHUB_ENV
     - name: Run GoReleaser
@@ -188,18 +178,18 @@ jobs:
       with:
         go-version: ${{ env.GOVERSION }}
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.5.0
+      uses: jaxxstorm/action-install-gh-release@v1.10.0
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v2
+      uses: pulumi/actions@v4
     - name: Setup Node
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ env.NODEVERSION }}
         registry-url: https://registry.npmjs.org
     - name: Setup DotNet
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ env.DOTNETVERSION }}
     - name: Setup Python
