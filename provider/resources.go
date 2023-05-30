@@ -59,7 +59,7 @@ func Provider() tfbridge.ProviderInfo {
 		// Change this to your personal name (or a company name) that you
 		// would like to be shown in the Pulumi Registry if this package is published
 		// there.
-		Publisher: "Rockset",
+		// Publisher: "Rockset",
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//
@@ -69,19 +69,18 @@ func Provider() tfbridge.ProviderInfo {
 		// PluginDownloadURL is an optional URL used to download the Provider
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
-		PluginDownloadURL: "github://github.com/thomascollett/pulumi-rockset",
-		Description:       "A Pulumi package for creating and managing Rockset resources.",
+		Description: "A Pulumi package for creating and managing Rockset resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
 		Keywords:   []string{"pulumi", "rockset", "category/database"},
 		License:    "Apache-2.0",
-		Homepage:   "https://www.rockset.com",
-		Repository: "github://github.com/thomascollett/pulumi-rockset/",
+		Homepage:   "https://pulumi.io",
+		Repository: "https://github.com/thomascollett/pulumi-rockset",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
 		GitHubOrg: "rockset",
-		Version:   "v0.7.2",
+		Version:   version.Version,
 		Config:    map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.

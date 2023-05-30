@@ -1,6 +1,5 @@
 PROJECT_NAME := rockset Package
 
-SHELL            := /bin/bash
 PACK             := rockset
 ORG              := thomascollett
 PROJECT          := github.com/${ORG}/pulumi-${PACK}
@@ -29,13 +28,13 @@ prepare::
 	mv "provider/cmd/pulumi-resource-x${EMPTY_TO_AVOID_SED}yz" provider/cmd/pulumi-resource-${NAME}
 
 	if [[ "${OS}" != "Darwin" ]]; then \
-		sed -i 's,github.com/pulumi/pulumi-rockset,${REPOSITORY},g' provider/go.mod; \
+		sed -i 's,github.com/thomascollett/pulumi-rockset,${REPOSITORY},g' provider/go.mod; \
 		find ./ ! -path './.git/*' -type f -exec sed -i 's/[x]yz/${NAME}/g' {} \; &> /dev/null; \
 	fi
 
 	# In MacOS the -i parameter needs an empty string to execute in place.
 	if [[ "${OS}" == "Darwin" ]]; then \
-		sed -i '' 's,github.com/pulumi/pulumi-rockset,${REPOSITORY},g' provider/go.mod; \
+		sed -i '' 's,github.com/thomascollett/pulumi-rockset,${REPOSITORY},g' provider/go.mod; \
 		find ./ ! -path './.git/*' -type f -exec sed -i '' 's/[x]yz/${NAME}/g' {} \; &> /dev/null; \
 	fi
 
@@ -106,7 +105,7 @@ clean::
 
 install_plugins::
 	[ -x $(shell which pulumi) ] || curl -fsSL https://get.pulumi.com | sh
-	pulumi plugin install resource random 4.3.1
+	pulumi plugin install resource random 4.8.2
 
 install_dotnet_sdk::
 	mkdir -p $(WORKING_DIR)/nuget

@@ -79,6 +79,8 @@ export class RocksetApiKey extends pulumi.CustomResource {
             resourceInputs["user"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["key"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(RocksetApiKey.__pulumiType, name, resourceInputs, opts);
     }
 }

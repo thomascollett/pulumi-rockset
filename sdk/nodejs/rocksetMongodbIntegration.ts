@@ -69,11 +69,13 @@ export class RocksetMongodbIntegration extends pulumi.CustomResource {
             if ((!args || args.connectionUri === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'connectionUri'");
             }
-            resourceInputs["connectionUri"] = args ? args.connectionUri : undefined;
+            resourceInputs["connectionUri"] = args?.connectionUri ? pulumi.secret(args.connectionUri) : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["connectionUri"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(RocksetMongodbIntegration.__pulumiType, name, resourceInputs, opts);
     }
 }

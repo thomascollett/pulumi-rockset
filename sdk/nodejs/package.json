@@ -7,8 +7,8 @@
         "rockset",
         "category/database"
     ],
-    "homepage": "https://www.rockset.com",
-    "repository": "github://github.com/thomascollett/pulumi-rockset/",
+    "homepage": "https://pulumi.io",
+    "repository": "https://github.com/thomascollett/pulumi-rockset",
     "license": "Apache-2.0",
     "scripts": {
         "build": "tsc",
@@ -24,7 +24,6 @@
     },
     "pulumi": {
         "resource": true,
-        "name": "rockset",
-        "server": "github://github.com/thomascollett/pulumi-rockset"
+        "name": "rockset"
     }
 }
