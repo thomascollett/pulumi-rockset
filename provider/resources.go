@@ -35,6 +35,10 @@ const (
 	mainMod = "index" // the rockset module
 )
 
+var namespaceMap = map[string]string{
+	mainPkg: "Rockset",
+}
+
 // preConfigureCallback is called before the providerConfigure function of the underlying provider.
 // It should validate that the provider can be configured, and provide actionable errors in the case
 // it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
@@ -46,7 +50,7 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(rockset.Provider())
+	p := shimv2.NewProvider(rockset.NewProvider())
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
@@ -170,6 +174,7 @@ func Provider() tfbridge.ProviderInfo {
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
+			Namespaces: namespaceMap,
 		},
 		Java: &tfbridge.JavaInfo{
 			BasePackage: "io.collett",
