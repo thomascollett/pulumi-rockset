@@ -135,8 +135,8 @@ jobs:
         path: ${{ github.workspace}}/sdk/${{ matrix.language }}.tar.gz
     name: build_sdk
   publish:
+    needs: build_sdk
     runs-on: ubuntu-latest
-    needs: test
     name: publish
     steps:
     - name: Checkout repo
