@@ -45,8 +45,8 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["apiKey"] = (args?.apiKey ? pulumi.secret(args.apiKey) : undefined) ?? utilities.getEnv("ROCKSET_APIKEY");
-            resourceInputs["apiServer"] = (args ? args.apiServer : undefined) ?? utilities.getEnv("ROCKSET_APISERVER");
+            resourceInputs["apiKey"] = args?.apiKey ? pulumi.secret(args.apiKey) : undefined;
+            resourceInputs["apiServer"] = args ? args.apiServer : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["apiKey"] };

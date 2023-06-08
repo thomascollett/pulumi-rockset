@@ -10,10 +10,12 @@ PROVIDER_PATH    := provider
 VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
 
 JAVA_GEN 		 := pulumi-java-gen
-JAVA_GEN_VERSION := v0.9.0
+JAVA_GEN_VERSION := v0.5.4
 TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell pulumictl get version)
+
+TESTPARALLELISM  := 4
 
 WORKING_DIR     := $(shell pwd)
 
@@ -70,15 +72,14 @@ build_go:: install_plugins tfgen # build the go sdk
 	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
 
 build_java:: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
-build_java:: bin/pulumi-java-gen install_plugins tfgen
-	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --out sdk/java --build gradle-nexus
+build_java: bin/pulumi-java-gen
+	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --out sdk/java  --build gradle-nexus
 	cd sdk/java/ && \
-		printf "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17\n" > go.mod && \
+		echo "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17" > go.mod && \
 		gradle --console=plain build
 
-bin/pulumi-java-gen::
-	mkdir -p $(WORKING_DIR)/bin
-	pulumictl download-binary -n pulumi-language-java -v $(JAVA_GEN_VERSION) -r pulumi/pulumi-java
+$(WORKING_DIR)/bin/$(JAVA_GEN)::
+	$(shell pulumictl download-binary -n pulumi-language-java -v $(JAVA_GEN_VERSION) -r pulumi/pulumi-java)
 
 lint_provider:: provider # lint the provider code
 	cd provider && golangci-lint run -c ../.golangci.yml
@@ -93,12 +94,11 @@ help::
  	expand -t20
 
 clean::
-	rm -rf sdk/{dotnet,nodejs,go,python}
+	rm -rf sdk/{dotnet,nodejs,go,python,java}
 
 install_plugins::
 	[ -x $(shell which pulumi) ] || curl -fsSL https://get.pulumi.com | sh
 	pulumi plugin install resource random 4.8.2
-	pulumi plugin install resource aws 5.11.0
 
 install_dotnet_sdk::
 	mkdir -p $(WORKING_DIR)/nuget

@@ -13,7 +13,7 @@ const __config = new pulumi.Config("rockset");
 export declare const apiKey: string | undefined;
 Object.defineProperty(exports, "apiKey", {
     get() {
-        return __config.get("apiKey") ?? utilities.getEnv("ROCKSET_APIKEY");
+        return __config.get("apiKey");
     },
     enumerable: true,
 });
@@ -24,7 +24,7 @@ Object.defineProperty(exports, "apiKey", {
 export declare const apiServer: string | undefined;
 Object.defineProperty(exports, "apiServer", {
     get() {
-        return __config.get("apiServer") ?? utilities.getEnv("ROCKSET_APISERVER");
+        return __config.get("apiServer");
     },
     enumerable: true,
 });

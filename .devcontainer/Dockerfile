@@ -1,11 +1,52 @@
-FROM  --platform=linux/amd64 pulumi/pulumi:3.68.0
+FROM pulumi/pulumi
 
-# Install pulumictl and set to PATH
-RUN curl -fsSL https://get.pulumi.com | sh
-ENV PATH="/root/.pulumi/bin:${PATH}"
+# Install golangci-lint
+RUN version=1.42.1 \
+    && curl -fsSL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b /go/bin v$version \
+    && golangci-lint version
 
-# create a directory for pulumictl and download the binary to it and set to PATH
-RUN mkdir -p /root/pulumictl && cd /root/pulumictl/
-RUN wget https://github.com/pulumi/pulumictl/releases/download/v0.0.42/pulumictl-v0.0.42-linux-amd64.tar.gz -O /root/pulumictl/pulumictl-v0.0.42-linux-amd64.tar.gz
-RUN tar -xvf /root/pulumictl/pulumictl-v0.0.42-linux-amd64.tar.gz -C /root/pulumictl/
-ENV PATH="//root/pulumictl/:${PATH}"
+# Install pulumictl
+RUN version=0.0.25 \
+    && curl -fsSLO https://github.com/pulumi/pulumictl/releases/download/v$version/pulumictl-v$version-linux-amd64.tar.gz \
+    && tar -xzf pulumictl-v$version-linux-amd64.tar.gz --directory /usr/local/bin --no-same-owner pulumictl \
+    && rm -f pulumictl-v$version-linux-amd64.tar.gz \
+    && pulumictl version
+
+# Add non-root user
+ARG USER_NAME=user
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
+RUN groupadd --gid $USER_GID $USER_NAME \
+    && useradd --uid $USER_UID --gid $USER_GID --shell /bin/bash -m $USER_NAME \
+    && mkdir -p /etc/sudoers.d \
+    && echo "$USER_NAME ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USER_NAME \
+    && chmod 0440 /etc/sudoers.d/$USER_NAME
+
+RUN mkdir -p /go/bin \
+    && chown -R $USER_NAME: /go \
+    && mkdir -p $HOME/.pulumi/bin \
+    && chown -R $USER_NAME: $HOME/.pulumi \
+    && mkdir -p /opt/gradle \
+    && chown -R $USER_NAME: /opt/gradle
+
+USER $USER_NAME
+
+# The base container sets XDG_CACHE_HOME XDG_CONFIG_HOME specifically for the root user, we can't unset them in a way that vscode will pick up, so we set them to values for the new user.
+# Installing go extensions via vscode use these paths so if we just leave it set to /root/.cache we'll get permission errors.
+ENV XDG_CONFIG_HOME=/home/$USER_NAME/.config
+ENV XDG_CACHE_HOME=/home/$USER_NAME/.cache
+
+RUN echo "export PATH=$HOME/.pulumi:$HOME/.pulumi/bin:$GOPATH/bin:/usr/local/go/bin:$PATH" >> ~/.bashrc \
+    && echo "alias l='ls -aF'" >> ~/.bash_aliases \
+    && echo "alias ll='ls -ahlF'" >> ~/.bash_aliases \
+    && echo "alias ls='ls --color=auto --group-directories-first'" >> ~/.bash_aliases
+
+RUN version=8.1.1 \
+    && cd /home/$USER_NAME \
+    && curl -fsSLO https://services.gradle.org/distributions/gradle-$version-bin.zip \
+    && unzip gradle-$version-bin.zip -d /opt/gradle \
+    && rm -f gradle-$version-bin.zip \
+    && echo "export PATH=/opt/gradle/gradle-$version/bin:~/.dotnet:~/.dotnet/tools:$PATH" >> ~/.bashrc
+
+RUN curl -fsSLl https://dot.net/v1/dotnet-install.sh | bash

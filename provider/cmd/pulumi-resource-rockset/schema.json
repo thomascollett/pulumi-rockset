@@ -34,7 +34,7 @@
             "importBasePath": "github.com/thomascollett/pulumi-rockset/sdk/go/rockset"
         },
         "java": {
-            "basePackage": "io.collett",
+            "basePackage": "io.collett.pulumi",
             "buildFiles": "",
             "gradleNexusPublishPluginVersion": ""
         },
@@ -67,21 +67,11 @@
             "apiKey": {
                 "type": "string",
                 "description": "The API key used to access Rockset\n",
-                "defaultInfo": {
-                    "environment": [
-                        "ROCKSET_APIKEY"
-                    ]
-                },
                 "secret": true
             },
             "apiServer": {
                 "type": "string",
-                "description": "The API server for accessing Rockset\n",
-                "defaultInfo": {
-                    "environment": [
-                        "ROCKSET_APISERVER"
-                    ]
-                }
+                "description": "The API server for accessing Rockset\n"
             }
         }
     },
@@ -695,21 +685,11 @@
             "apiKey": {
                 "type": "string",
                 "description": "The API key used to access Rockset\n",
-                "defaultInfo": {
-                    "environment": [
-                        "ROCKSET_APIKEY"
-                    ]
-                },
                 "secret": true
             },
             "apiServer": {
                 "type": "string",
-                "description": "The API server for accessing Rockset\n",
-                "defaultInfo": {
-                    "environment": [
-                        "ROCKSET_APISERVER"
-                    ]
-                }
+                "description": "The API server for accessing Rockset\n"
             }
         }
     },

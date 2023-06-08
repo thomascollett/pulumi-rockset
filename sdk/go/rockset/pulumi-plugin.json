@@ -1,0 +1,5 @@
+{
+  "resource": true,
+  "name": "rockset",
+  "server": "github://api.github.com/thomascollett"
+}
