@@ -28,7 +28,7 @@ public class RocksetKinesisCollection extends com.pulumi.resources.CustomResourc
      * Text describing the collection.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -46,7 +46,7 @@ public class RocksetKinesisCollection extends com.pulumi.resources.CustomResourc
      * 
      */
     @Deprecated /* Use ingest_transformation instead */
-    @Export(name="fieldMappingQuery", refs={String.class}, tree="[0]")
+    @Export(name="fieldMappingQuery", type=String.class, parameters={})
     private Output</* @Nullable */ String> fieldMappingQuery;
 
     /**
@@ -60,7 +60,7 @@ public class RocksetKinesisCollection extends com.pulumi.resources.CustomResourc
      * Ingest transformation SQL query. Turns the collection into insert_only mode.
      * 
      */
-    @Export(name="ingestTransformation", refs={String.class}, tree="[0]")
+    @Export(name="ingestTransformation", type=String.class, parameters={})
     private Output</* @Nullable */ String> ingestTransformation;
 
     /**
@@ -74,7 +74,7 @@ public class RocksetKinesisCollection extends com.pulumi.resources.CustomResourc
      * Unique identifier for the collection. Can contain alphanumeric or dash characters.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -88,7 +88,7 @@ public class RocksetKinesisCollection extends com.pulumi.resources.CustomResourc
      * Number of seconds after which data is purged. Based on event time.
      * 
      */
-    @Export(name="retentionSecs", refs={Integer.class}, tree="[0]")
+    @Export(name="retentionSecs", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> retentionSecs;
 
     /**
@@ -102,7 +102,7 @@ public class RocksetKinesisCollection extends com.pulumi.resources.CustomResourc
      * Defines a source for this collection.
      * 
      */
-    @Export(name="sources", refs={List.class,RocksetKinesisCollectionSource.class}, tree="[0,1]")
+    @Export(name="sources", type=List.class, parameters={RocksetKinesisCollectionSource.class})
     private Output</* @Nullable */ List<RocksetKinesisCollectionSource>> sources;
 
     /**
@@ -116,7 +116,7 @@ public class RocksetKinesisCollection extends com.pulumi.resources.CustomResourc
      * Wait until the collection is ready.
      * 
      */
-    @Export(name="waitForCollection", refs={Boolean.class}, tree="[0]")
+    @Export(name="waitForCollection", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> waitForCollection;
 
     /**
@@ -130,7 +130,7 @@ public class RocksetKinesisCollection extends com.pulumi.resources.CustomResourc
      * Wait until the collection has documents. The default is to wait for 0 documents, which means it doesn&#39;t wait.
      * 
      */
-    @Export(name="waitForDocuments", refs={Integer.class}, tree="[0]")
+    @Export(name="waitForDocuments", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> waitForDocuments;
 
     /**
@@ -144,7 +144,7 @@ public class RocksetKinesisCollection extends com.pulumi.resources.CustomResourc
      * The name of the workspace.
      * 
      */
-    @Export(name="workspace", refs={String.class}, tree="[0]")
+    @Export(name="workspace", type=String.class, parameters={})
     private Output<String> workspace;
 
     /**

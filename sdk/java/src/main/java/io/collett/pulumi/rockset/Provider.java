@@ -27,7 +27,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The API key used to access Rockset
      * 
      */
-    @Export(name="apiKey", refs={String.class}, tree="[0]")
+    @Export(name="apiKey", type=String.class, parameters={})
     private Output</* @Nullable */ String> apiKey;
 
     /**
@@ -41,7 +41,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The API server for accessing Rockset
      * 
      */
-    @Export(name="apiServer", refs={String.class}, tree="[0]")
+    @Export(name="apiServer", type=String.class, parameters={})
     private Output</* @Nullable */ String> apiServer;
 
     /**

@@ -72,13 +72,13 @@ build_go:: install_plugins tfgen # build the go sdk
 	$(WORKING_DIR)/bin/$(TFGEN) go --overlays provider/overlays/go --out sdk/go/
 
 build_java:: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
-build_java: bin/pulumi-java-gen
-	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/$(PROVIDER)/schema.json --out sdk/java  --build gradle-nexus
-	cd sdk/java/ && \
+build_java:: bin/pulumi-java-gen
+	$(WORKING_DIR)/bin/$(JAVA_GEN) generate --schema provider/cmd/${PROVIDER}/schema.json --out sdk/java --build gradle-nexus
+	cd $(WORKING_DIR)/sdk/java/ && \
 		echo "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17" > go.mod && \
 		gradle --console=plain build
 
-$(WORKING_DIR)/bin/$(JAVA_GEN)::
+bin/pulumi-java-gen::
 	$(shell pulumictl download-binary -n pulumi-language-java -v $(JAVA_GEN_VERSION) -r pulumi/pulumi-java)
 
 lint_provider:: provider # lint the provider code

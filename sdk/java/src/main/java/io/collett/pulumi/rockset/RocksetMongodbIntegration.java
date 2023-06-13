@@ -25,7 +25,7 @@ public class RocksetMongodbIntegration extends com.pulumi.resources.CustomResour
      * MongoDB connection URI string. The password is scrubbed from the URI when fetched by the API so this field is NOT set on imports and reads.
      * 
      */
-    @Export(name="connectionUri", refs={String.class}, tree="[0]")
+    @Export(name="connectionUri", type=String.class, parameters={})
     private Output<String> connectionUri;
 
     /**
@@ -39,7 +39,7 @@ public class RocksetMongodbIntegration extends com.pulumi.resources.CustomResour
      * Text describing the integration.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -53,7 +53,7 @@ public class RocksetMongodbIntegration extends com.pulumi.resources.CustomResour
      * Unique identifier for the integration. Can contain alphanumeric or dash characters.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**

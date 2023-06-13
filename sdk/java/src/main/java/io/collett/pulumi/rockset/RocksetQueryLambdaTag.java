@@ -23,7 +23,7 @@ public class RocksetQueryLambdaTag extends com.pulumi.resources.CustomResource {
      * Unique identifier for the tag. Can contain alphanumeric or dash characters.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -37,7 +37,7 @@ public class RocksetQueryLambdaTag extends com.pulumi.resources.CustomResource {
      * Unique identifier for the query lambda. Can contain alphanumeric or dash characters.
      * 
      */
-    @Export(name="queryLambda", refs={String.class}, tree="[0]")
+    @Export(name="queryLambda", type=String.class, parameters={})
     private Output<String> queryLambda;
 
     /**
@@ -51,7 +51,7 @@ public class RocksetQueryLambdaTag extends com.pulumi.resources.CustomResource {
      * Version of the query lambda this tag should point to.
      * 
      */
-    @Export(name="version", refs={String.class}, tree="[0]")
+    @Export(name="version", type=String.class, parameters={})
     private Output<String> version;
 
     /**
@@ -65,7 +65,7 @@ public class RocksetQueryLambdaTag extends com.pulumi.resources.CustomResource {
      * The name of the workspace the query lambda is in.
      * 
      */
-    @Export(name="workspace", refs={String.class}, tree="[0]")
+    @Export(name="workspace", type=String.class, parameters={})
     private Output<String> workspace;
 
     /**

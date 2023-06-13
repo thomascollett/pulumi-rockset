@@ -24,7 +24,7 @@ public class RocksetView extends com.pulumi.resources.CustomResource {
      * The user who created the view.
      * 
      */
-    @Export(name="createdBy", refs={String.class}, tree="[0]")
+    @Export(name="createdBy", type=String.class, parameters={})
     private Output<String> createdBy;
 
     /**
@@ -38,7 +38,7 @@ public class RocksetView extends com.pulumi.resources.CustomResource {
      * Text describing the collection.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -52,7 +52,7 @@ public class RocksetView extends com.pulumi.resources.CustomResource {
      * Unique name for the view in the workspace. Can contain alphanumeric or dash characters.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -66,7 +66,7 @@ public class RocksetView extends com.pulumi.resources.CustomResource {
      * SQL query used for thw view.
      * 
      */
-    @Export(name="query", refs={String.class}, tree="[0]")
+    @Export(name="query", type=String.class, parameters={})
     private Output<String> query;
 
     /**
@@ -80,7 +80,7 @@ public class RocksetView extends com.pulumi.resources.CustomResource {
      * Workspace name.
      * 
      */
-    @Export(name="workspace", refs={String.class}, tree="[0]")
+    @Export(name="workspace", type=String.class, parameters={})
     private Output<String> workspace;
 
     /**

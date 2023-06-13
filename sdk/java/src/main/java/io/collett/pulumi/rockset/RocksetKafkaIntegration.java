@@ -23,7 +23,7 @@ public class RocksetKafkaIntegration extends com.pulumi.resources.CustomResource
      * The Kafka bootstrap server url(s). Required only for V3 integration.
      * 
      */
-    @Export(name="bootstrapServers", refs={String.class}, tree="[0]")
+    @Export(name="bootstrapServers", type=String.class, parameters={})
     private Output</* @Nullable */ String> bootstrapServers;
 
     /**
@@ -37,7 +37,7 @@ public class RocksetKafkaIntegration extends com.pulumi.resources.CustomResource
      * Kafka connection string.
      * 
      */
-    @Export(name="connectionString", refs={String.class}, tree="[0]")
+    @Export(name="connectionString", type=String.class, parameters={})
     private Output<String> connectionString;
 
     /**
@@ -51,7 +51,7 @@ public class RocksetKafkaIntegration extends com.pulumi.resources.CustomResource
      * Text describing the integration.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -65,7 +65,7 @@ public class RocksetKafkaIntegration extends com.pulumi.resources.CustomResource
      * The format of the Kafka topics being tailed. Possible values: JSON, AVRO.
      * 
      */
-    @Export(name="kafkaDataFormat", refs={String.class}, tree="[0]")
+    @Export(name="kafkaDataFormat", type=String.class, parameters={})
     private Output</* @Nullable */ String> kafkaDataFormat;
 
     /**
@@ -79,7 +79,7 @@ public class RocksetKafkaIntegration extends com.pulumi.resources.CustomResource
      * Kafka topics to tail.
      * 
      */
-    @Export(name="kafkaTopicNames", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="kafkaTopicNames", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> kafkaTopicNames;
 
     /**
@@ -93,7 +93,7 @@ public class RocksetKafkaIntegration extends com.pulumi.resources.CustomResource
      * Unique identifier for the integration. Can contain alphanumeric or dash characters.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -107,7 +107,7 @@ public class RocksetKafkaIntegration extends com.pulumi.resources.CustomResource
      * Kafka configuration for schema registry. Required only for V3 integration.
      * 
      */
-    @Export(name="schemaRegistryConfig", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="schemaRegistryConfig", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> schemaRegistryConfig;
 
     /**
@@ -121,7 +121,7 @@ public class RocksetKafkaIntegration extends com.pulumi.resources.CustomResource
      * Kafka security configurations. Required only for V3 integration.
      * 
      */
-    @Export(name="securityConfig", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="securityConfig", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> securityConfig;
 
     /**
@@ -135,7 +135,7 @@ public class RocksetKafkaIntegration extends com.pulumi.resources.CustomResource
      * Use v3 for Confluent Cloud.
      * 
      */
-    @Export(name="useV3", refs={Boolean.class}, tree="[0]")
+    @Export(name="useV3", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> useV3;
 
     /**
@@ -149,7 +149,7 @@ public class RocksetKafkaIntegration extends com.pulumi.resources.CustomResource
      * Wait until the integration is active.
      * 
      */
-    @Export(name="waitForIntegration", refs={Boolean.class}, tree="[0]")
+    @Export(name="waitForIntegration", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> waitForIntegration;
 
     /**

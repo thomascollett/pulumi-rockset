@@ -24,7 +24,7 @@ public class RocksetWorkspace extends com.pulumi.resources.CustomResource {
      * The user who created the workspace.
      * 
      */
-    @Export(name="createdBy", refs={String.class}, tree="[0]")
+    @Export(name="createdBy", type=String.class, parameters={})
     private Output<String> createdBy;
 
     /**
@@ -38,7 +38,7 @@ public class RocksetWorkspace extends com.pulumi.resources.CustomResource {
      * Text describing the collection.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -52,7 +52,7 @@ public class RocksetWorkspace extends com.pulumi.resources.CustomResource {
      * Unique identifier for workspace. Can contain alphanumeric or dash characters.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**

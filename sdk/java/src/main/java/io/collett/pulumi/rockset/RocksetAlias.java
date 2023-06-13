@@ -24,7 +24,7 @@ public class RocksetAlias extends com.pulumi.resources.CustomResource {
      * List of collections for this alias to refer to.
      * 
      */
-    @Export(name="collections", refs={String.class}, tree="[0]")
+    @Export(name="collections", type=String.class, parameters={})
     private Output<String> collections;
 
     /**
@@ -38,7 +38,7 @@ public class RocksetAlias extends com.pulumi.resources.CustomResource {
      * Text describing the alias.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -52,7 +52,7 @@ public class RocksetAlias extends com.pulumi.resources.CustomResource {
      * Unique identifier for the alias. Can contain alphanumeric or dash characters.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -66,7 +66,7 @@ public class RocksetAlias extends com.pulumi.resources.CustomResource {
      * Name of the workspace the alias will be in.
      * 
      */
-    @Export(name="workspace", refs={String.class}, tree="[0]")
+    @Export(name="workspace", type=String.class, parameters={})
     private Output<String> workspace;
 
     /**

@@ -24,7 +24,7 @@ public class RocksetS3Integration extends com.pulumi.resources.CustomResource {
      * The AWS Role Arn to use for this integration.
      * 
      */
-    @Export(name="awsRoleArn", refs={String.class}, tree="[0]")
+    @Export(name="awsRoleArn", type=String.class, parameters={})
     private Output<String> awsRoleArn;
 
     /**
@@ -38,7 +38,7 @@ public class RocksetS3Integration extends com.pulumi.resources.CustomResource {
      * Text describing the integration.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -52,7 +52,7 @@ public class RocksetS3Integration extends com.pulumi.resources.CustomResource {
      * Unique identifier for the integration. Can contain alphanumeric or dash characters.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**

@@ -27,7 +27,7 @@ public class RocksetApiKey extends com.pulumi.resources.CustomResource {
      * The resulting Rockset api key.
      * 
      */
-    @Export(name="key", refs={String.class}, tree="[0]")
+    @Export(name="key", type=String.class, parameters={})
     private Output<String> key;
 
     /**
@@ -41,7 +41,7 @@ public class RocksetApiKey extends com.pulumi.resources.CustomResource {
      * Name of the api key.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -55,7 +55,7 @@ public class RocksetApiKey extends com.pulumi.resources.CustomResource {
      * The role the api key will use. If not specified, &#34;All User Assigned Roles&#34; will be used.
      * 
      */
-    @Export(name="role", refs={String.class}, tree="[0]")
+    @Export(name="role", type=String.class, parameters={})
     private Output</* @Nullable */ String> role;
 
     /**
@@ -69,7 +69,7 @@ public class RocksetApiKey extends com.pulumi.resources.CustomResource {
      * The user the key is created for.
      * 
      */
-    @Export(name="user", refs={String.class}, tree="[0]")
+    @Export(name="user", type=String.class, parameters={})
     private Output<String> user;
 
     /**

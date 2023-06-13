@@ -26,7 +26,7 @@ public class RocksetQueryLambda extends com.pulumi.resources.CustomResource {
      * Text describing the query lambda.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -40,7 +40,7 @@ public class RocksetQueryLambda extends com.pulumi.resources.CustomResource {
      * Unique identifier for the query lambda. Can contain alphanumeric or dash characters.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -50,7 +50,7 @@ public class RocksetQueryLambda extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="sqls", refs={List.class,RocksetQueryLambdaSql.class}, tree="[0,1]")
+    @Export(name="sqls", type=List.class, parameters={RocksetQueryLambdaSql.class})
     private Output<List<RocksetQueryLambdaSql>> sqls;
 
     public Output<List<RocksetQueryLambdaSql>> sqls() {
@@ -60,7 +60,7 @@ public class RocksetQueryLambda extends com.pulumi.resources.CustomResource {
      * The latest state of this query lambda.
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**
@@ -74,7 +74,7 @@ public class RocksetQueryLambda extends com.pulumi.resources.CustomResource {
      * The latest version string of this query lambda.
      * 
      */
-    @Export(name="version", refs={String.class}, tree="[0]")
+    @Export(name="version", type=String.class, parameters={})
     private Output<String> version;
 
     /**
@@ -88,7 +88,7 @@ public class RocksetQueryLambda extends com.pulumi.resources.CustomResource {
      * The name of the workspace.
      * 
      */
-    @Export(name="workspace", refs={String.class}, tree="[0]")
+    @Export(name="workspace", type=String.class, parameters={})
     private Output<String> workspace;
 
     /**

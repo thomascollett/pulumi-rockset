@@ -28,7 +28,7 @@ public class RocksetUser extends com.pulumi.resources.CustomResource {
      * The ISO-8601 time of when the user was created.
      * 
      */
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    @Export(name="createdAt", type=String.class, parameters={})
     private Output<String> createdAt;
 
     /**
@@ -42,7 +42,7 @@ public class RocksetUser extends com.pulumi.resources.CustomResource {
      * Email address of the user. Also used to identify the user.
      * 
      */
-    @Export(name="email", refs={String.class}, tree="[0]")
+    @Export(name="email", type=String.class, parameters={})
     private Output<String> email;
 
     /**
@@ -56,7 +56,7 @@ public class RocksetUser extends com.pulumi.resources.CustomResource {
      * User&#39;s first name. This can only be set once the state is ACTIVE, i.e after the user has accepted the invite.
      * 
      */
-    @Export(name="firstName", refs={String.class}, tree="[0]")
+    @Export(name="firstName", type=String.class, parameters={})
     private Output</* @Nullable */ String> firstName;
 
     /**
@@ -70,7 +70,7 @@ public class RocksetUser extends com.pulumi.resources.CustomResource {
      * User&#39;s last name. This can only be set once the state is ACTIVE, i.e after the user has accepted the invite.
      * 
      */
-    @Export(name="lastName", refs={String.class}, tree="[0]")
+    @Export(name="lastName", type=String.class, parameters={})
     private Output</* @Nullable */ String> lastName;
 
     /**
@@ -84,7 +84,7 @@ public class RocksetUser extends com.pulumi.resources.CustomResource {
      * List of roles for the user. E.g. &#39;admin&#39;, &#39;member&#39;, &#39;read-only&#39;.
      * 
      */
-    @Export(name="roles", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="roles", type=List.class, parameters={String.class})
     private Output<List<String>> roles;
 
     /**
@@ -98,7 +98,7 @@ public class RocksetUser extends com.pulumi.resources.CustomResource {
      * State of the user, either NEW or ACTIVE.
      * 
      */
-    @Export(name="state", refs={String.class}, tree="[0]")
+    @Export(name="state", type=String.class, parameters={})
     private Output<String> state;
 
     /**

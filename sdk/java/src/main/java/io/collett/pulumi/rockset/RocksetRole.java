@@ -74,7 +74,7 @@ public class RocksetRole extends com.pulumi.resources.CustomResource {
      * When the role was created.
      * 
      */
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    @Export(name="createdAt", type=String.class, parameters={})
     private Output<String> createdAt;
 
     /**
@@ -88,7 +88,7 @@ public class RocksetRole extends com.pulumi.resources.CustomResource {
      * Who created the role.
      * 
      */
-    @Export(name="createdBy", refs={String.class}, tree="[0]")
+    @Export(name="createdBy", type=String.class, parameters={})
     private Output<String> createdBy;
 
     /**
@@ -102,7 +102,7 @@ public class RocksetRole extends com.pulumi.resources.CustomResource {
      * Role description.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -116,7 +116,7 @@ public class RocksetRole extends com.pulumi.resources.CustomResource {
      * Role name.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -130,7 +130,7 @@ public class RocksetRole extends com.pulumi.resources.CustomResource {
      * The email of the user who currently owns the role.
      * 
      */
-    @Export(name="ownerEmail", refs={String.class}, tree="[0]")
+    @Export(name="ownerEmail", type=String.class, parameters={})
     private Output<String> ownerEmail;
 
     /**
@@ -144,7 +144,7 @@ public class RocksetRole extends com.pulumi.resources.CustomResource {
      * Privileges associated with the role. For a full list see [API documentation](https://rockset.com/docs/iam/#supported-privileges)
      * 
      */
-    @Export(name="privileges", refs={List.class,RocksetRolePrivilege.class}, tree="[0,1]")
+    @Export(name="privileges", type=List.class, parameters={RocksetRolePrivilege.class})
     private Output</* @Nullable */ List<RocksetRolePrivilege>> privileges;
 
     /**

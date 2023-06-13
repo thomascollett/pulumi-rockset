@@ -1,12 +1,12 @@
 FROM pulumi/pulumi
 
 # Install golangci-lint
-RUN version=1.42.1 \
+RUN version=1.53.2 \
     && curl -fsSL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b /go/bin v$version \
     && golangci-lint version
 
 # Install pulumictl
-RUN version=0.0.25 \
+RUN version=0.0.43 \
     && curl -fsSLO https://github.com/pulumi/pulumictl/releases/download/v$version/pulumictl-v$version-linux-amd64.tar.gz \
     && tar -xzf pulumictl-v$version-linux-amd64.tar.gz --directory /usr/local/bin --no-same-owner pulumictl \
     && rm -f pulumictl-v$version-linux-amd64.tar.gz \
@@ -42,7 +42,7 @@ RUN echo "export PATH=$HOME/.pulumi:$HOME/.pulumi/bin:$GOPATH/bin:/usr/local/go/
     && echo "alias ll='ls -ahlF'" >> ~/.bash_aliases \
     && echo "alias ls='ls --color=auto --group-directories-first'" >> ~/.bash_aliases
 
-RUN version=8.1.1 \
+RUN version=7.6.1 \
     && cd /home/$USER_NAME \
     && curl -fsSLO https://services.gradle.org/distributions/gradle-$version-bin.zip \
     && unzip gradle-$version-bin.zip -d /opt/gradle \
